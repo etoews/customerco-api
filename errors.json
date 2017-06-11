@@ -1,0 +1,25 @@
+{
+  "errors": [
+    {
+      "transactionId": "1dc92f06-8ede-4fb4-8921-b507601fb59d",
+      "appErrorCode": "customer.firstname.max-size",
+      "httpStatusCode": 400,
+      "title": "Customer first name exceeded max size",
+      "detail": "Customer first name must be less than 64 characters.",
+      "links": [
+        {
+          "rel": "about",
+          "href": "https://docs.customerco.com/api/customers/"
+        },
+        {
+          "rel": "help",
+          "href": "https://docs.customerco.com/api/app-error-codes/customer.firstname.max-size/"
+        },
+        {
+          "rel": "support",
+          "href": "https://support.customerco.com/api/"
+        }
+      ]
+    }
+  ]
+}

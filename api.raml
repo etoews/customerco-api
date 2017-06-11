@@ -1,0 +1,89 @@
+#%RAML 1.0
+title: CustomerCo API
+version: v1beta1
+baseUri: https://customerco.com/api/{version}
+protocols: [ HTTPS ]
+mediaType: application/json
+
+uses:
+  types: types.raml
+  traits: traits.raml
+
+/customers:
+  get:
+    description: Get customers
+    is: [
+      traits.searchable: {fields: "firstName, lastName, city, region, country, postalCode", example: "city:Wellington"},
+      traits.sortable: {fields: "firstName, lastName, city, region, country, postalCode"},
+      traits.pageable,
+      traits.cacheable
+    ]
+    responses:
+      200:
+        body:
+          type: types.Customers
+          example: !include customers.json
+  post:
+    description: Create a customer
+    body:
+      type: types.CustomerCreate
+      example: !include customer-create.json
+    responses:
+      201:
+        description: The created customer(s)
+        headers:
+          Location:
+            description: URL of new customer
+            type: string
+            required: true
+        body:
+          type: types.Customer
+          example: !include customer.json
+      400:
+        body:
+          type: types.Errors
+          example: !include errors.json
+  put:
+    description: Update many customers. Only those customers included in the request body will be updated.
+    body:
+      type: types.Customers
+      example: !include customers.json
+    responses:
+      204:
+        description: If the customers were updated successfully, no content is returned.
+      400:
+        body:
+          type: types.Errors
+          example: !include errors.json
+  /{id}:
+    get:
+      description: Get customer
+      responses:
+        200:
+          body:
+            type: types.Customer
+            example: !include customer.json
+        404:
+    put:
+      description: Update customer
+      body:
+        type: types.Customer
+        example: !include customer.json
+      responses:
+        204:
+          description: If the customer was updated successfully, no content is returned.
+        400:
+          body:
+            type: types.Errors
+            example: !include errors.json
+        404:
+    delete:
+      description: Delete customer
+      responses:
+        204:
+          description: If the customer was deleted successfully, no content is returned.
+        400:
+          body:
+            type: types.Errors
+            example: !include errors.json
+        404:

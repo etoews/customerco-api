@@ -1,0 +1,23 @@
+{
+  "id": "980d5a09-1b94-424e-85cc-be94a700877c",
+  "firstName": "Customer",
+  "lastName": "One",
+  "addresses": [
+    {
+      "label": "Home",
+      "isDefault": false,
+      "addressLine1": "1 Customer One Home Rd.",
+      "addressLine2": "",
+      "city": "Wellington",
+      "region": "",
+      "country": "NZ",
+      "postalCode": "1234"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://customerco.com/api/v1beta1/customers/980d5a09-1b94-424e-85cc-be94a700877c",
+      "rel": "self"
+    }
+  ]
+}

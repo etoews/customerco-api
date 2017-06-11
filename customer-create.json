@@ -1,0 +1,16 @@
+{
+  "firstName": "Customer",
+  "lastName": "One",
+  "addresses": [
+    {
+      "label": "Home",
+      "isDefault": false,
+      "addressLine1": "1 Customer One Home Rd.",
+      "addressLine2": "",
+      "city": "Wellington",
+      "region": "",
+      "country": "NZ",
+      "postalCode": "1234"
+    }
+  ]
+}
