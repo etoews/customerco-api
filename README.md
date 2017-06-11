@@ -17,17 +17,22 @@ The API RAML spec can be found in [api.raml](api.raml) and the MuleSoft hosted A
 1. A periodic sync of customers using the API.
   * Supported by the design decision [Cache control](#cache-control).
   * Supported by the design decision [Batch PUT /customers](#batch-put-customers).
+
 1. A mobile app that allows retrieval and update of customers details.
   * Mobile apps can be particularly sensitive to chatty APIs.
-    * Chattiness is reduced by the design decision [Cache control](#cache-control) and [Batch PUT /customers](#batch-put-customers).
+    * Chattiness is reduced by the design decisions
+      * [Cache control](#cache-control)
+      * [Batch PUT /customers](#batch-put-customers)
+      * [Searching, sorting, and pagination](#searching-sorting-and-pagination)
     * Chattiness could also be further reduced by a batch POST /customers operation if that was a requirement.
   * Mobile apps can be particularly sensitive to APIs that required large data transfers.
     * This API hasn't been profiled so it's currently unknown if it requires large data transfers.
     * If it's determined that large amounts of data are being transferred, I would look at enabling gzip compression (see [Future design work](#future-design-work)).
     * gzip compression hasn't been enabled initially as I believe that would be a premature optimization.
   * Prevent the use of the header Connection:Keep-Alive to avoid maintaining open connections and draining the battery.
+
 1. Simple extension of the API to support future resources such as orders and products.
-  * Supported by the design decision [RAML 1.0 or 0.8?](#raml-1-0-or-0-8).
+  * Supported by the design decision [RAML 1.0 or 0.8?](#raml-10-or-08).
   * RAML traits are already in use in this API and can be reused by new resources make them consistent with existing resources.
   * Introduce the use of RAML resourceTypes to make common types consistent throughout the API.
   * Add link relations between related resources such as Customers and Orders. For example, in a Customer resource JSON representation.
@@ -84,9 +89,15 @@ Below is commentary on some of the interesting design decisions made while writi
 * Decision: Enable batch updates of customers
 
 ### Cache control
-* To enable the use cases of "periodic sync of customers using the API" and a "mobile app that allows retrieval and update of customers details" the GET /customers operations implements cache control.
+* To enable the use cases of "periodic sync of customers using the API" and a "mobile app that allows retrieval and update of customers details" the GET /customers operation implements cache control.
 * This is specified and documented in [traits](traits.raml) in the cacheable section.
 * Decision: Enable cache control
+
+### Searching, sorting, and pagination
+* To enable the use case of a "mobile app that allows retrieval" the GET /customers operation implements searching, sorting, and pagination.
+* This allows the user to quickly find the resources they're looking for and minimize data transfer.
+* This is specified and documented in [traits](traits.raml) in the searchable, sortable, and pageable sections.
+* Decision: Enable searching, sorting, and pagination
 
 ### Versioning
 * There are a number of ways to version an API: URI versioning, query string versioning, header versioning, media type versioning, or even no versioning at all.
