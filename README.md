@@ -37,14 +37,14 @@ The API RAML spec can be found in [api.raml](api.raml) and the MuleSoft hosted A
     * Introduce the use of RAML resourceTypes to make common types consistent throughout the API.
     * Add link relations between related resources such as Customers and Orders. For example, in a Customer resource JSON representation.
 
-    ```json
-    "links": [
-      {
-        "href": "https://customerco.com/api/v1beta1/customers/980d5a09-1b94-424e-85cc-be94a700877c/orders",
-        "rel": "related"
-      }
-    ]
-    ```
+        ```json
+        "links": [
+          {
+            "href": "https://customerco.com/api/v1beta1/customers/980d5a09-1b94-424e-85cc-be94a700877c/orders",
+            "rel": "related"
+          }
+        ]
+        ```
 
 ## Design decisions
 
@@ -110,7 +110,7 @@ Below is commentary on some of the interesting design decisions made while writi
 ### Errors
 * Rich error messages are one of the most crucial and most overlooked aspects of good API design.
 * Good error messages should include possible remediation steps and links to helpful resources like documentation and support.
-* This work is based on my work on the [Error spec for OpenStack] (http://specs.openstack.org/openstack/api-wg/guidelines/errors.html), which was largely informed by the [Error spec for JSON API](http://jsonapi.org/format/#errors)
+* This work is based on my work on the [Error spec for OpenStack](http://specs.openstack.org/openstack/api-wg/guidelines/errors.html), which was largely informed by the [Error spec for JSON API](http://jsonapi.org/format/#errors)
 * This is specified and documented in [types]types.raml) in the Error type.
 * **Decision**: Enable rich error messages
 
@@ -127,9 +127,9 @@ The above design decisions are a good start on the design of this API. However, 
 * Use of server certificates for TLS.
 * [Security scheme](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md#security-schemes), [Authentication method](https://docs.mulesoft.com/anypoint-connector-devkit/v/3.8/authentication-methods)), and the use of the HTTP status code 401.
 * Rate limiting and the use of the header Retry-After.
-* Enabling gzip compression and the use of the header Content-Encoding (see [Using the GZIP Compress and Uncompress Transformer With MuleSoft] (https://dzone.com/articles/gzip-compress-and-uncompress-transformer-with-mule)).
+* Enabling gzip compression and the use of the header Content-Encoding (see [Using the GZIP Compress and Uncompress Transformer With MuleSoft](https://dzone.com/articles/gzip-compress-and-uncompress-transformer-with-mule)).
 * Cross-Origin Resource Sharing (see [An Authoritative Guide to CORS (Cross-Origin Resource Sharing) for REST APIs](https://www.programmableweb.com/news/authoritative-guide-to-cors-cross-origin-resource-sharing-rest-apis/how-to/2017/03/08)).
-* Determining this API's approach to backwards compatibility (see [Google Cloud Platform's spec]( https://cloud.google.com/apis/design/compatibility)).
+* Determining this API's approach to backwards compatibility (see [Google Cloud Platform's compatibility spec]( https://cloud.google.com/apis/design/compatibility)).
 * Determining what clients will be supported. For example, software development kits (SDKs) written in Python, Java, Swift, Go, C#, Node.js, etc., command line interfaces (CLIs), web user interfaces, and mobile app user interfaces (UIs).
 
 ## Aside: An API workshop
