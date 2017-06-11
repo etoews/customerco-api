@@ -22,12 +22,15 @@ types:
       links:
         type: Link[]
         required: true
-  Customers:
+  CustomersUpdate:
     type: object
     properties:
       customers:
         type: Customer[]
         required: true
+  Customers:
+    type: CustomersUpdate
+    properties:
       total:
         type: integer
         required: true

@@ -20,6 +20,7 @@ uses:
     ]
     responses:
       200:
+        description: Customers
         body:
           type: types.Customers
           example: !include customers.json
@@ -30,28 +31,30 @@ uses:
       example: !include customer-create.json
     responses:
       201:
-        description: The created customer(s)
+        description: The created customer
         headers:
           Location:
-            description: URL of new customer
+            description: URI of the new customer
             type: string
             required: true
         body:
           type: types.Customer
           example: !include customer.json
       400:
+        description: Client error
         body:
           type: types.Errors
           example: !include errors.json
   put:
     description: Update many customers. Only those customers included in the request body will be updated.
     body:
-      type: types.Customers
-      example: !include customers.json
+      type: types.CustomersUpdate
+      example: !include customers-update.json
     responses:
       204:
         description: If the customers were updated successfully, no content is returned.
       400:
+        description: Client error
         body:
           type: types.Errors
           example: !include errors.json
@@ -60,10 +63,12 @@ uses:
       description: Get customer
       responses:
         200:
+          description: Customer
           body:
             type: types.Customer
             example: !include customer.json
         404:
+          description: Customer not found
     put:
       description: Update customer
       body:
@@ -73,17 +78,21 @@ uses:
         204:
           description: If the customer was updated successfully, no content is returned.
         400:
+          description: Client error
           body:
             type: types.Errors
             example: !include errors.json
         404:
+          description: Customer not found
     delete:
       description: Delete customer
       responses:
         204:
           description: If the customer was deleted successfully, no content is returned.
         400:
+          description: Client error
           body:
             type: types.Errors
             example: !include errors.json
         404:
+          description: Customer not found
