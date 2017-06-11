@@ -10,7 +10,9 @@ An exercise in creating an API using RAML for the fictional company CustomerCo.
 
 ## RAML Spec and API documentation
 
-The API RAML spec can be found in [api.raml](api.raml) and the MuleSoft hosted API Reference can be found in the [public portal]().
+The API RAML spec can be found in [api.raml](api.raml) and the MuleSoft hosted API Reference can be found in the [public portal](https://anypoint.mulesoft.com/apiplatform/phymata-solutions/#/portals/organizations/a1040e92-4e85-4f13-8c73-6773da2bb8d7/apis/19819467/versions/452019).
+
+To validate and view this API, download [this zip file](https://github.com/everett-toews/customerco-api/archive/master.zip) and import it in the API Designer of the [MuleSoft Anypoint Platform](https://anypoint.mulesoft.com).
 
 ## Use cases
 
